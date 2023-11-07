@@ -1,0 +1,9 @@
+server:
+  port: 8085
+application:
+  context-path: /transaction-processor
+spring:
+  application:
+    name: transaction-processor
+  profiles:
+    active: local
