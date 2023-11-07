@@ -1,4 +1,4 @@
-package com.br.pagamentosimplificado.processadortransacao.application.transaction;
+package com.br.pagamentosimplificado.processadortransacao.application.dto;
 
 import java.math.BigDecimal;
 

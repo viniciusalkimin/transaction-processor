@@ -1,7 +1,7 @@
 spring:
   database: h2
   datasource:
-    url: jdbc:h2:mem:pagamento-simplificado
+    url: jdbc:h2:tcp://localhost:9090/mem:pagamento-simplificado
     username: sa
     password:
     driverClassName: org.h2.Driver

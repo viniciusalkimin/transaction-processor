@@ -1,9 +1,11 @@
 package com.br.pagamentosimplificado.processadortransacao.domain.account;
 
+import com.br.pagamentosimplificado.processadortransacao.domain.account.User.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -19,15 +21,22 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    private BigDecimal balance;
+    @OneToOne
+    private User holder;
 
-    public BigDecimal receivePayment(BigDecimal value) {
-        this.balance.add(value);
-        return balance;
+    @Setter
+    BigDecimal balance;
+
+    @Enumerated(EnumType.STRING)
+    private AccountType accountType;
+
+    public void receivePayment(BigDecimal value) {
+        var newValue = this.balance.add(value);
+        setBalance(newValue);
     }
 
-    public BigDecimal pay(BigDecimal value) {
-        this.balance.subtract(value);
-        return balance;
+    public void pay(BigDecimal value) {
+        var newValue = this.balance.subtract(value);
+        setBalance(newValue);
     }
 }

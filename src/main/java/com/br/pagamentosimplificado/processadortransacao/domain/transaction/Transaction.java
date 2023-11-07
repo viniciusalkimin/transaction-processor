@@ -15,6 +15,7 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "transactions")
 public class Transaction {
 
     @Id
@@ -25,7 +26,6 @@ public class Transaction {
 
     private String receiverAccountId;
 
-    @Column(precision = 8, scale = 2)
     private BigDecimal transactionValue;
 
     private LocalDateTime moment;
