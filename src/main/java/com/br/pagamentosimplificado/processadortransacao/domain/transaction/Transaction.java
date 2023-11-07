@@ -1,9 +1,6 @@
 package com.br.pagamentosimplificado.processadortransacao.domain.transaction;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,13 +19,14 @@ public class Transaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID transactionId;
+    private UUID id;
 
     private String payerAccountId;
 
     private String receiverAccountId;
 
-    private BigDecimal value;
+    @Column(precision = 8, scale = 2)
+    private BigDecimal transactionValue;
 
-    private LocalDateTime stampDateTime;
+    private LocalDateTime moment;
 }

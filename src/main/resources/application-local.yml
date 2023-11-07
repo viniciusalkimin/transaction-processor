@@ -23,3 +23,13 @@ spring:
     port: 5672
     username: guest
     password: guest
+    listener:
+      simple:
+        retry:
+          enable: true
+          max-attempt: 3
+          initial-interval: 5000
+          multiplier: 1
+          max-interval: 30000
+queue:
+  name: transaction

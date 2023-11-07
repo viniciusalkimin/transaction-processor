@@ -1,4 +1,4 @@
-package com.br.pagamentosimplificado.processadortransacao.application.transaction.service.impl;
+package com.br.pagamentosimplificado.processadortransacao.infrastructure.transaction.impl;
 
 import com.br.pagamentosimplificado.processadortransacao.application.transaction.TransactionDataDTO;
 import com.br.pagamentosimplificado.processadortransacao.application.transaction.service.TransacationService;
@@ -23,7 +23,7 @@ public class TransactionServiceImpl implements TransacationService {
     public void processTransaction(TransactionDataDTO transactionDataDTO) {
         var transaction = Transaction.builder()
                 .payerAccountId(transactionDataDTO.idAccountPayer()).receiverAccountId(transactionDataDTO.idAccountReceiver())
-                .value(transactionDataDTO.value()).stampDateTime(LocalDateTime.now())
+                .transactionValue(transactionDataDTO.value()).moment(LocalDateTime.now())
                 .build();
         var transactSaved = transactionRepository.save(transaction);
         var accountPayer = accountRepository.findById(UUID.fromString(transactionDataDTO.idAccountPayer())).get();
